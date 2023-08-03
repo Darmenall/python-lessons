@@ -261,67 +261,67 @@
 #     window.run()
 
 ############################CheckButton#########################################
-
-
-from tkinter import *
-from tkinter import messagebox as mb
-
-
-class Window:
-    def __init__(self, width, height, title="Python tkinter", resizable=(False, False), icon=r"icon.ico"):
-        self.root = Tk()
-        self.root.title(title)
-        self.root.geometry(f"{width}x{height}+200+200")
-        self.root.resizable(resizable[0],resizable[1])
-        if icon:
-            self.root.iconbitmap(icon)
-
-        self.a = IntVar()
-        self.b = IntVar()
-
-        self.l1 = Label(self.root, text="Hello World!")
-        # self.a = IntVar()
-        self.a = 0
-
-
-
-    def run(self):
-        self.draw_widgets()
-        self.root.mainloop()
-
-    def draw_widgets(self):
-        self.l1.pack()
-        Checkbutton(self.root, text="one", variable=self.a, command=self.aa).pack()
-        Checkbutton(self.root, text="two", variable=self.b, command=self.bb).pack()
-        Button(self.root, text="start",command=self.start).pack()
-
-        Button(self.root, text="Quit", width=10, command=self.exit).pack()
-
-    def exit(self):
-        choice = mb.askokcancel("Quit", "Do you want to quit?")
-        if choice:
-            self.root.destroy()
-
-    def start(self):
-        if self.a == 1 and self.b == 1:
-            self.l1.configure(text="one and two")
-        elif self.a == 1:
-            self.l1.configure(text="one")
-        elif self.b == 1:
-            self.l1.configure(text="two")
-        else:
-            self.l1.configure(text="Hello World!")
-
-    def aa(self):
-        self.a = 1
-
-    def bb(self):
-        self.b = 1
-
-
-if __name__ == "__main__":
-    window = Window(500, 500, "TKINTER")
-    window.run()
+#
+#
+# from tkinter import *
+# from tkinter import messagebox as mb
+#
+#
+# class Window:
+#     def __init__(self, width, height, title="Python tkinter", resizable=(False, False), icon=r"icon.ico"):
+#         self.root = Tk()
+#         self.root.title(title)
+#         self.root.geometry(f"{width}x{height}+200+200")
+#         self.root.resizable(resizable[0],resizable[1])
+#         if icon:
+#             self.root.iconbitmap(icon)
+#
+#         self.a = IntVar()
+#         self.b = IntVar()
+#
+#         self.l1 = Label(self.root, text="Hello World!")
+#         # self.a = IntVar()
+#         self.a = 0
+#
+#
+#
+#     def run(self):
+#         self.draw_widgets()
+#         self.root.mainloop()
+#
+#     def draw_widgets(self):
+#         self.l1.pack()
+#         Checkbutton(self.root, text="one", variable=self.a, command=self.aa).pack()
+#         Checkbutton(self.root, text="two", variable=self.b, command=self.bb).pack()
+#         Button(self.root, text="start",command=self.start).pack()
+#
+#         Button(self.root, text="Quit", width=10, command=self.exit).pack()
+#
+#     def exit(self):
+#         choice = mb.askokcancel("Quit", "Do you want to quit?")
+#         if choice:
+#             self.root.destroy()
+#
+#     def start(self):
+#         if self.a == 1 and self.b == 1:
+#             self.l1.configure(text="one and two")
+#         elif self.a == 1:
+#             self.l1.configure(text="one")
+#         elif self.b == 1:
+#             self.l1.configure(text="two")
+#         else:
+#             self.l1.configure(text="Hello World!")
+#
+#     def aa(self):
+#         self.a = 1
+#
+#     def bb(self):
+#         self.b = 1
+#
+#
+# if __name__ == "__main__":
+#     window = Window(500, 500, "TKINTER")
+#     window.run()
 ######################  Combobox  ###########################
 # from tkinter import *
 # from tkinter import messagebox as mb
@@ -381,6 +381,7 @@ if __name__ == "__main__":
 #             self.root.iconbitmap(icon)
 #
 #         self.s = Spinbox(self.root, values=list(range(10)))
+#         self.l = Label(self.root,text="Python")
 #
 #
 #     def run(self):
@@ -389,13 +390,17 @@ if __name__ == "__main__":
 #
 #     def draw_widgets(self):
 #         self.s.pack()
+#         self.l.pack()
 #
 #         Button(self.root, text="Save", width=10, command=self.save).pack()
 #         Button(self.root, text="Quit", width=10, command=self.exit).pack()
 #
 #     def save(self):
 #         choice_1 = self.s.get()
+#         self.l.configure(text=f"{choice_1}", bg="red")
 #         mb.showinfo("Info_1", f"Got value_1 {choice_1}")
+#
+#
 #
 #     def exit(self):
 #         choice = mb.askokcancel("Quit", "Do you want to quit?")
@@ -601,50 +606,98 @@ if __name__ == "__main__":
 # if __name__ == "__main__":
 #     window = Window(500, 500, "TKINTER")
 #     window.run()
-############################  ScrolledText  ###################################
-#
-# from tkinter import *
-# from tkinter import messagebox as mb
-# from tkinter.scrolledtext import ScrolledText
-#
-#
-# class Window:
-#     def __init__(self, width, height, title="Python tkinter", resizable=(True, True), icon=r"icon.ico"):
-#         self.root = Tk()
-#         self.root.title(title)
-#         self.root.geometry(f"{width}x{height}+200+200")
-#         self.root.resizable(resizable[0],resizable[1])
-#         if icon:
-#             self.root.iconbitmap(icon)
-#
-#         self.st = ScrolledText(self.root, width=50, height=5, bg="yellow", fg="green", relief=SUNKEN, bd=8,
-#                                selectbackground="red", selectforeground="blue", font=("Arial", 11, "bold"),
-#                                padx=5, pady=8, wrap=WORD, spacing1=10, spacing2=20, spacing3=30, tabs=300,
-#                                state=DISABLED)
-#
-#     def run(self):
-#         self.draw_widgets()
-#         self.root.mainloop()
-#
-#     def draw_widgets(self):
-#         self.st.configure(state=NORMAL)
-#
-#         self.st.tag_config("ref", background="blue", foreground="white", underline=1, font=("Consolas", 14),
-#                            justify=CENTER, offset=-8, relief=RAISED, borderwidth=2)
-#
-#
-#
-#         self.st.configure(state=DISABLED)
-#
-#         self.st.pack()
-#     def exit(self):
-#         choice = mb.askokcancel("Quit", "Do you want to quit?")
-#         if choice:
-#             self.root.destroy()
-#
-#
-# if __name__ == "__main__":
-#     window = Window(500, 500, "TKINTER")
-#     window.run()
-#
+
+from tkinter import *
+from tkinter import Button
+from tkinter import messagebox as mb
+import tkinter as tk
+
+class Window:
+    def __init__(self, width, height, title="Python tkinter", resizable=(False, False), icon=r"icon.ico"):
+        self.root = Tk()
+        self.root.title(title)
+        self.root.geometry(f"{width}x{height}+200+200")
+        self.root.resizable(resizable[0],resizable[1])
+        if icon:
+            self.root.iconbitmap(icon)
+
+        self.entry = tk.Entry(self.root, font="Helvetica 20 bold", justify="right")
+        self.entry.grid(row=0, column=0, columnspan=4)
+
+    def run(self):
+        self.draw_widgets()
+        self.root.mainloop()
+
+    def draw_widgets(self):
+        Button(self.root, text="7",command=lambda x=7: self.entry.insert(tk.END, x),
+            font="Helvetica 20 bold",
+               relief="ridge").grid(row=1, column=0, sticky="nsew")
+        Button(self.root, text="8", command=lambda x=8: self.entry.insert(tk.END, x),
+               font="Helvetica 20 bold",
+               relief="ridge").grid(row=1, column=1, sticky="nsew")
+        Button(self.root, text="9", command=lambda x=9: self.entry.insert(tk.END, x),
+               font="Helvetica 20 bold",
+               relief="ridge").grid(row=1, column=2, sticky="nsew")
+        Button(self.root, text="/", command=lambda x="/": self.entry.insert(tk.END, x),
+               font="Helvetica 20 bold",
+               relief="ridge").grid(row=1, column=3, sticky="nsew")
+        Button(self.root, text="4", command=lambda x=4: self.entry.insert(tk.END, x),
+               font="Helvetica 20 bold",
+               relief="ridge").grid(row=2, column=0, sticky="nsew")
+        Button(self.root, text="5", command=lambda x=5: self.entry.insert(tk.END, x),
+               font="Helvetica 20 bold",
+               relief="ridge").grid(row=2, column=1, sticky="nsew")
+        Button(self.root, text="6", command=lambda x=6: self.entry.insert(tk.END, x),
+               font="Helvetica 20 bold",
+               relief="ridge").grid(row=2, column=2, sticky="nsew")
+        Button(self.root, text="*", command=lambda x="*": self.entry.insert(tk.END, x),
+               font="Helvetica 20 bold",
+               relief="ridge").grid(row=2, column=3, sticky="nsew")
+        Button(self.root, text="1", command=lambda x=1: self.entry.insert(tk.END, x),
+               font="Helvetica 20 bold",
+               relief="ridge").grid(row=3, column=0, sticky="nsew")
+        Button(self.root, text="2", command=lambda x=2: self.entry.insert(tk.END, x),
+               font="Helvetica 20 bold",
+               relief="ridge").grid(row=3, column=1, sticky="nsew")
+        Button(self.root, text="3", command=lambda x=3: self.entry.insert(tk.END, x),
+               font="Helvetica 20 bold",
+               relief="ridge").grid(row=3, column=2, sticky="nsew")
+        Button(self.root, text="-", command=lambda x="-": self.entry.insert(tk.END, x),
+               font="Helvetica 20 bold",
+               relief="ridge").grid(row=3, column=3, sticky="nsew")
+        Button(self.root, text="0", command=lambda x=0: self.entry.insert(tk.END, x),
+               font="Helvetica 20 bold",
+               relief="ridge").grid(row=4, column=0, sticky="nsew")
+        Button(self.root, text="C", command=lambda x="C": self.on_click(x),
+               font="Helvetica 20 bold",
+               relief="ridge").grid(row=4, column=1, sticky="nsew")
+        Button(self.root, text="=", command=lambda x="=": self.on_click(x),
+               font="Helvetica 20 bold",
+               relief="ridge").grid(row=4, column=2, sticky="nsew")
+        Button(self.root, text="+", command=lambda x="+": self.entry.insert(tk.END, x),
+               font="Helvetica 20 bold",
+               relief="ridge").grid(row=4, column=3, sticky="nsew")
+
+    def on_click(self, text):
+        if text == "=":
+            try:
+                result = str(eval(self.entry.get()))
+                self.entry.delete(0, tk.END)
+                self.entry.insert(tk.END, result)
+            except Exception as e:
+                self.entry.delete(0, tk.END)
+                self.entry.insert(tk.END, "Error")
+        elif text == "C":
+            self.entry.delete(0, tk.END)
+
+
+if __name__ == "__main__":
+    window = Window(305, 260, "TKINTER")
+    window.run()
+
+
+
+
+
+
 
